@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+
 
 public class logo_page {
 	
@@ -23,13 +23,15 @@ public class logo_page {
 	}
 
 	 //For checking the logo is displayed or not
-	 public void logo() throws InterruptedException
+	 public boolean isDisplayed()
 	 {
-		 Boolean a= logo1.isDisplayed();
-		 Assert.assertTrue(a);
-		 System.out.println("The image is displayed=" +a);
-		 Thread.sleep(2000);
-		
-    }
+		 return logo1.isDisplayed();
+		 
+     }
+	 
+	 public String url()
+	 {
+		 return driver.getCurrentUrl();
+	 }
 	 
 }

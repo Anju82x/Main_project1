@@ -2,6 +2,8 @@ package Test;
 
 import java.io.IOException;
 import java.time.Duration;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import Base.base;
 import Page.select_page;
@@ -14,11 +16,8 @@ import Page.navigate_page;
 public class Agoda_test extends base {
 
 
-	
-	
    @Test(priority = 0)
 	
-   //Logo verifying
 	public void  logoverify() throws InterruptedException
 	{
     	
@@ -27,10 +26,17 @@ public class Agoda_test extends base {
 		test = extent.createTest("Logo verfication");
 		logo_page obj =new logo_page(driver);
 		
-		obj.logo();	
+		//logo verification
+		boolean a =obj.isDisplayed();
+		Assert.assertTrue(a);
+		System.out.println("Logo displayed status: " + a);
+		
+		//url verification
+		String actualUrl = obj.url();
+		Assert.assertTrue(actualUrl.contains("agoda.com"));
+		System.out.println("Url verified successfully" +actualUrl);	
 	}
-
-	
+   
 	@Test(priority = 1)
 	
 	//Data entering
@@ -40,14 +46,12 @@ public class Agoda_test extends base {
 		test = extent.createTest("Searching");
 		Homepage obj1 =new Homepage(driver);
 		
-		obj1.place("Thrissur");
+		obj1.place("Malappuram");
 		obj1.date();
 		obj1.date1();
 		obj1.person(); 
-		obj1.button();
-		
-
-}
+		obj1.button();	
+    }
 	
 	@Test(priority = 2)
 	
@@ -60,7 +64,8 @@ public class Agoda_test extends base {
 		
 		obj2.Screenshot();
 
-  }
+     }
+	
 	@Test(priority = 3)
 	
 	//Language
@@ -72,7 +77,6 @@ public class Agoda_test extends base {
 	     
 	     obj3.language();
 	     obj3.country();
-
 	}
 	
 	@Test(priority = 4)
@@ -87,8 +91,4 @@ public class Agoda_test extends base {
 		obj4.refresh();
 		obj4.back1();
 	}
-	
-	
-	
-	
 }

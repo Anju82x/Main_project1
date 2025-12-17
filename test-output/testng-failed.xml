@@ -8,9 +8,7 @@
           <include name="browserclose"/>
           <include name="browserclose"/>
           <include name="setup"/>
-          <include name="flag"/>
           <include name="navigate"/>
-          <include name="home"/>
         </methods>
       </class> <!-- Test.Agoda_test -->
     </classes>
